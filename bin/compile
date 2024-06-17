@@ -13,8 +13,19 @@ else
   echo "       No license found"
 fi
 
-echo $1 | ./.downloads/prince-$PRINCE_VERSION-ubuntu20.04-amd64/install.sh
+echo $1 | ./.downloads/prince-$PRINCE_VERSION-ubuntu20.04-amd64/install.sh /app/.apt/usr
+
 cat >$1/bin/prince15 <<EOF
 #!/bin/sh
-exec /app/lib/prince/bin/prince --prefix="/app/lib/prince" "\$@"
+
+PRINCE_BASE=$(dirname $0)/../.apt/usr/lib/prince
+LICENSE_PATH="$PRINCE_BASE"/license/license.dat
+LICENSE_INSTALLED_PATH="$PRINCE_BASE"/license/license_installed
+
+if [ -n "$PRINCE_LICENSE" ]; then
+  printenv PRINCE_LICENSE > "$LICENSE_PATH"
+  touch "$LICENSE_INSTALLED_PATH"
+fi
+
+exec "$PRINCE_BASE/bin/prince" --prefix "$PRINCE_BASE" "$@"
 EOF
