@@ -6,12 +6,12 @@ echo "-----> Installing PrinceXML $PRINCE_VERSION"
 (cd .downloads; [ -d "prince-$PRINCE_VERSION-linux-amd64-static" ] ||
   curl -s https://www.princexml.com/download/prince-$PRINCE_VERSION-ubuntu20.04-amd64.tar.gz | tar xzf -)
 
-echo $1 | ./.downloads/prince-$PRINCE_VERSION-ubuntu20.04-amd64/install.sh /app/.apt/usr
+echo $1 | ./.downloads/prince-$PRINCE_VERSION-ubuntu20.04-amd64/install.sh /app/.apt/usr2
 
 cat >$1/bin/prince15 <<EOF
 #!/bin/sh
 
-PRINCE_BASE=$(dirname $0)/../.apt/usr/lib/prince
+PRINCE_BASE=$(dirname $0)/../.apt/usr2/lib/prince
 LICENSE_PATH="$PRINCE_BASE"/license/license.dat
 LICENSE_INSTALLED_PATH="$PRINCE_BASE"/license/license_installed
 
