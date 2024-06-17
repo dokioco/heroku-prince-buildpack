@@ -1,0 +1,5 @@
+#!/bin/sh
+
+echo "Deploying PrinceXML buildpack..."
+
+exit 0
