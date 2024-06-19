@@ -6,5 +6,5 @@ echo "-----> Installing PrinceXML $PRINCE_VERSION"
 (cd .downloads; [ -d "prince-$PRINCE_VERSION-linux-amd64-static" ] ||
   curl -s https://www.princexml.com/download/prince-$PRINCE_VERSION-ubuntu20.04-amd64.tar.gz | tar xzf -)
 
-mkdir -p /app/.prince
-echo $1 | ./.downloads/prince-$PRINCE_VERSION-ubuntu20.04-amd64/install.sh /app/.prince
+[ -d ~/.prince ] || mkdir ~/.prince
+echo $1 | ./.downloads/prince-$PRINCE_VERSION-ubuntu20.04-amd64/install.sh ~/.prince
