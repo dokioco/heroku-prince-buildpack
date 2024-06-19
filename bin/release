@@ -1,5 +1,3 @@
-#!/bin/sh
-
-echo "Deploying PrinceXML buildpack..."
-
-exit 0
+#!/usr/bin/env bash
+echo "Release PrinceXML"
+echo "--- {}"
